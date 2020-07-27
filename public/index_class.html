@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>MY iMAGEBOARD</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <h1>MY IMAGEBOARD</h1>
+    <div id="main">
+        <h2>My fav cohort is: {{ name }} </h2>
+        <h2>Maths! 2 * 2 = {{ 2 * 2 }}</h2>
+        <h2>Capitalize! = {{ 'hello'.toUpperCase() }}</h2>
+        <h2 v-if="seen">Can you see me?</h2>
+
+        <ul>
+            <li v-for="city in cities" @click="petesMethod">{{ city.name }}, {{ city.country }}</li>
+
+
+        </ul>
+
+
+    </div>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

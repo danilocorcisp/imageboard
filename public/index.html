@@ -1,10 +1,92 @@
 <!doctype html>
 <html>
+
 <head>
-    <title></title>
+    <title>BLACKTEREST</title>
+    <link href="https://fonts.googleapis.com/css2family=Open+Sans:wght@600&?family=Abel&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" />
 </head>
+
 <body>
+    <header>
+    <img src="/img/logo.png" />
+        <h1>BLACKTEREST</h1>
+        
+
+    </header>
+
+    <div id="main">
+
+    <h3>They are not anonymous. They are heroes. Come and see important names from black people through out the History.</h3>
+
+        <form class="upload">
+            <input v-model='title' type="text" name="title" placeholder="title">
+            <input v-model='description' type="text" name="description" placeholder="description">
+            <input v-model='username' type="text" name="username" placeholder="username">
+            <div class="upload-btn-wrapper">
+            <button class="btn">Upload a file</button>
+            <input @change="handleChange" type="file" class="choose" label="Choose a file" name="file" accept="image/*">
+            </div>
+            
+            <button @click="handleClick">submit</button>
+        </form>
+
+        <modal-component v-if="selectedImage" :id="selectedImage" @close="closeModal"></modal-component>
+
+        <div class="image-display">
+            <div class="item" v-for="image in images">
+                <img @click="selectedImage = image.id" class="image" :src="image.url">
+                <p class="main title">{{image.title}}</p>
+                <p class="description">{{image.description}}</p>
+                <p class="main user">Shared by: {{image.username}}</p>
+
+            </div>
+        </div>
+         <button @click="getMoreImages">More</button>
+    </div>
+
+    <script type="text/x-template" id="image-pop">
+        <div class="image-pop">
+            <div class="modalDisplay">
+                <p class="close" @click="closeModal">X</p>
+                <img class="image-full" :src="image.url">
+                <div class="details">
+                    <p class="main title">{{image.title}}</p>
+                    <p class="description">{{image.description}}</p>
+                    <p class="main user">Shared by {{image.username}} on {{image.created_at}}</p>
+                    <div class="comentarios">
+                    <h1>Comments</h1>
+                    <form class="comentario-form">
+                        <input v-model="sendComment" id="comment-data" type="text" name="comment" placeholder="Leave a comment">
+                        <input v-model="sendCommentAuthor" type="text" name="username" placeholder="Your name" >
+                        <button @click="handleClick">Send</button>
+                    </form>
+                    <div class="comentarios-wrap">
+                        <div class="comment" v-for="comment in image.comments">
+                            <p class="texto">{{comment.comment}}</p>
+                            <p>
+                                <span class="comment-username">{{comment.username}}</span> 
+                                <span class="comment-timestamp"> on {{comment.created_at}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- <button @click="getMore">More</button> -->
+            </div>
+           
+        </div>
+        </script>
+
+    <footer>Red Army 2020</footer>
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+    
+
 </body>
+
 </html>
