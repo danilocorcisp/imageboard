@@ -1,3 +1,3 @@
 # imageboard
 
-A imageboard project using javascript and connecting through Amazon.
+An imageboard project using javascript and connecting through Amazon.
