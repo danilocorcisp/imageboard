@@ -13,11 +13,11 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "aws-sdk": "^2.476.0",
+        "aws-sdk": "^2.829.0",
         "express": "^4.14.0",
         "multer": "^1.2.0",
-        "pg": "^8.2.1",
-        "spiced-pg": "^1.0.0",
+        "pg": "^8.5.1",
+        "spiced-pg": "^1.0.4",
         "uid-safe": "^2.1.4"
     }
 }
